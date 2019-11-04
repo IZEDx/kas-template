@@ -1,0 +1,18 @@
+{
+  "name": "@kas/backend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Koa Backend",
+  "main": "bin/server.js",
+  "scripts": {
+    "start": "node bin/server.js",
+    "build": "npx cross-env NODE_ENV=production parcel build src/index.ts --public-url . --out-dir ./dist/ --target node",
+    "dev": "npx parcel watch src/index.ts --out-dir ./dist/  --target node",
+    "clear": "rm -rf .cache & rm -rf dist"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "@kas/shared": "^0"
+  }
+}

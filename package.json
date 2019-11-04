@@ -1,0 +1,19 @@
+{
+  "name": "kas-template",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "build": "npx lerna run build",
+    "build:frontend": "cd ./packages/frontend && npm run build",
+    "build:backend": "cd ./packages/backend && npm run build",
+    "dev": "(cd ./packages/frontend && npm run dev) & (cd ./packages/backend && npm run dev)",
+    "test": "npx lerna run test",
+    "start": "cd ./packages/backend && npm start",
+    "postinstall": "npx lerna bootstrap"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "lerna": "^3.18.3",
+    "typescript": "^3.6.4"
+  }
+}

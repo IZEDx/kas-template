@@ -1,0 +1,12 @@
+{
+  "name": "@kas/shared",
+  "private": true,
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "files": ["src"],
+  "description": "Shared code and data for backend and frontend",
+  "scripts": {
+  },
+  "dependencies": {
+  }
+}

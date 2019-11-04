@@ -12,8 +12,6 @@
     "generate": "npx stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.3.3",
-    "@stencil/router": "^1.0.1",
     "@kas/shared": "^0"
   }
 }

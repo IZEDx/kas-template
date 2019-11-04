@@ -11,7 +11,7 @@
     "test.watch": "npx stencil test --spec --e2e --watchAll",
     "generate": "npx stencil generate"
   },
-  "dependencies": {
+  "devDependencies": {
     "@stencil/core": "^1.3.3",
     "@stencil/router": "^1.0.1",
     "@kas/shared": "^0"

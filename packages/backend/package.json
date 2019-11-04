@@ -6,8 +6,8 @@
   "main": "bin/server.js",
   "scripts": {
     "start": "node bin/server.js",
-    "build": "npx cross-env NODE_ENV=production parcel build src/index.ts --public-url . --out-dir ./dist/ --target node",
-    "dev": "npx parcel watch src/index.ts --out-dir ./dist/  --target node",
+    "build": "npx cross-env NODE_ENV=production parcel build src/index.ts --public-url . --out-dir ./dist/ --target node --bundle-node-modules",
+    "dev": "npx parcel watch src/index.ts --out-dir ./dist/  --target node --bundle-node-modules",
     "clear": "rm -rf .cache & rm -rf dist"
   },
   "dependencies": {},

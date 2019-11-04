@@ -6,14 +6,28 @@
     "build": "npx lerna run build",
     "build:frontend": "cd ./packages/frontend && npm run build",
     "build:backend": "cd ./packages/backend && npm run build",
-    "dev": "(cd ./packages/frontend && npm run dev) & (cd ./packages/backend && npm run dev)",
+    "dev": "npm run dev:frontend & npm run dev:backend",
+    "dev:frontend": "cd ./packages/frontend && npm run dev",
+    "dev:backend": "cd ./packages/backend && npm run dev",
     "test": "npx lerna run test",
     "start": "cd ./packages/backend && npm start",
-    "postinstall": "npx lerna bootstrap"
+    "postinstall": "npx lerna bootstrap",
+    "typesync": "npx typesync"
   },
   "devDependencies": {
+    "@types/koa": "^2.0.51",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.0.42",
     "cross-env": "^6.0.3",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
     "lerna": "^3.18.3",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "typesync": "^0.6.1"
   }
 }

@@ -29,6 +29,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lerna": "^3.18.3",
+    "restyped-axios": "^2.0.0",
     "typescript": "^3.6.4",
     "typesync": "^0.6.1"
   },

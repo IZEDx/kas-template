@@ -6,24 +6,21 @@
 		},
 		{
 			"name": "shared",
-			"path": "packages\\shared"
+			"path": "packages\\shared\\src"
 		},
 		{
 			"name": "backend",
-			"path": "packages\\backend"
+			"path": "packages\\backend\\src"
 		},
 		{
 			"name": "frontend",
-			"path": "packages\\frontend",
+			"path": "packages\\frontend\\src",
 		}
 	],
 	"settings": {
 		"files.exclude": {
-			"node_modules/": true,
 			".stencil/": true,
-			"www/": true,
 			"package-lock.json": true,
-			"dist/": true,
 			".cache/": true
 		}
 	}

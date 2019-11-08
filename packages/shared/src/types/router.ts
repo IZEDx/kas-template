@@ -1,6 +1,6 @@
 import Router from "koa-router";
 import Koa from "koa";
-import {RestypedIndexedBase, RestypedRoute, RestypedBase} from "restyped";
+import {RestypedBase} from "restyped";
 
 type HTTPMethods = "get"|"post"|"put"|"patch"|"head"|"delete"|"options";
 
@@ -12,7 +12,7 @@ type GetRoute<R extends Record<string, any>> = {
 
 type Handler<S = any, C = {}, R = {}> = (context: Omit<Koa.ParameterizedContext<S, C>, keyof R>&R, next: () => Promise<any>) => any;
 
-declare type TypedRouter<Schema extends RestypedBase = any, S = any, C = {}> = Omit<Router<S, C>, HTTPMethods> & {
+export type TypedRouter<Schema extends RestypedBase = any, S = any, C = {}> = Omit<Router<S, C>, HTTPMethods> & {
     get<Path extends keyof Schema>(path: Path, handler: Handler<S, C, GetRoute<Schema[Path]["GET"]>>): TypedRouter<Schema, S, C>;
     post<Path extends keyof Schema>(path: Path, handler: Handler<S, C, Schema[Path]["POST"]>): TypedRouter<Schema, S, C>;
     put<Path extends keyof Schema>(path: Path, handler: Handler<S, C, Schema[Path]["PUT"]>): TypedRouter<Schema, S, C>;

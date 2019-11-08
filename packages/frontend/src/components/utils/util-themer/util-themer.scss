@@ -1,0 +1,39 @@
+util-themer {
+
+    .theme-preview {
+        $size: 142px;
+        overflow: hidden;
+        height: $size;
+        width: $size;
+
+        iframe {
+            // zoom: 0.25;
+            $scale: 0.42;
+            transform: scale($scale);
+            transform-origin: 0 0;
+            -moz-transform: scale($scale);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale($scale);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale($scale);
+            -webkit-transform-origin: 0 0;
+            min-width: $size / $scale; 
+            min-height: $size / $scale; 
+            border: 1px solid black;
+            pointer-events: none;
+
+            html {
+                overflow: hidden;
+            }
+        }
+    }
+
+    .modal-card-foot {
+        justify-content: center;
+        .label {
+            padding: 10px;
+            padding-right: 17px;
+            padding-bottom: 4px;
+        }
+    }
+}

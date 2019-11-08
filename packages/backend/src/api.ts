@@ -1,5 +1,4 @@
-import { TypedRouter } from "./typed-router";
-import { APISchema, helloWorld } from "@kas/shared";
+import { APISchema, helloWorld, TypedRouter } from "@kas/shared";
 
 export function createApi(router: TypedRouter<APISchema>)
 {

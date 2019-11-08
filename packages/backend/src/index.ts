@@ -4,10 +4,13 @@ import logger from "koa-logger";
 import json from "koa-json";
 import serveStatic from "koa-static";
 import { join } from "path";
+import socketIo from "socket.io";
 
-import {helloWorld} from "@kas/shared";
+import {helloWorld, TypedSocketServer, SocketSchema} from "@kas/shared";
 import { createApi } from "./api";
 import { readFile, log } from "./libs/utils";
+import { createServer } from "http";
+import { onConnection } from "./socket";
 
 const frontEndDir = join(__dirname, "..", "..", "frontend", "www");
 const staticExtensions = ["js", "map", "html", "json", "css", "ico", "png", "jpg"];
@@ -46,10 +49,15 @@ export async function main()
         ctx.status = 200;
         ctx.body = (await readFile(join(frontEndDir, "index.html"))).toString();
     });
+    
+    const server = createServer(app.callback());
+    const io = socketIo(server) as TypedSocketServer<SocketSchema>;
+    io.on('connection', onConnection);
 
-    app.listen(port, () => {
+    server.listen(port, () => {
         log.main(`Server started on port ${port}`);
     });
 
     log.debug(helloWorld);
 }
+ 

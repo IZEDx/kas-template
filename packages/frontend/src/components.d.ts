@@ -18,6 +18,15 @@ export namespace Components {
     'match': MatchResults;
   }
   interface AppRoot {}
+  interface UtilGrid {
+    'items': any[];
+    'map': (v: any, i: number) => any;
+    'width': number;
+  }
+  interface UtilThemer {
+    'active': boolean;
+    'url': string;
+  }
 }
 
 declare global {
@@ -46,11 +55,25 @@ declare global {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLUtilGridElement extends Components.UtilGrid, HTMLStencilElement {}
+  var HTMLUtilGridElement: {
+    prototype: HTMLUtilGridElement;
+    new (): HTMLUtilGridElement;
+  };
+
+  interface HTMLUtilThemerElement extends Components.UtilThemer, HTMLStencilElement {}
+  var HTMLUtilThemerElement: {
+    prototype: HTMLUtilThemerElement;
+    new (): HTMLUtilThemerElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-nav': HTMLAppNavElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'util-grid': HTMLUtilGridElement;
+    'util-themer': HTMLUtilThemerElement;
   }
 }
 
@@ -61,12 +84,25 @@ declare namespace LocalJSX {
     'match'?: MatchResults;
   }
   interface AppRoot {}
+  interface UtilGrid {
+    'items'?: any[];
+    'map'?: (v: any, i: number) => any;
+    'width'?: number;
+  }
+  interface UtilThemer {
+    'active'?: boolean;
+    'onCloseThemer'?: (event: CustomEvent<void>) => void;
+    'onSelectTheme'?: (event: CustomEvent<string>) => void;
+    'url'?: string;
+  }
 
   interface IntrinsicElements {
     'app-home': AppHome;
     'app-nav': AppNav;
     'app-profile': AppProfile;
     'app-root': AppRoot;
+    'util-grid': UtilGrid;
+    'util-themer': UtilThemer;
   }
 }
 
@@ -80,6 +116,8 @@ declare module "@stencil/core" {
       'app-nav': LocalJSX.AppNav & JSXBase.HTMLAttributes<HTMLAppNavElement>;
       'app-profile': LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'util-grid': LocalJSX.UtilGrid & JSXBase.HTMLAttributes<HTMLUtilGridElement>;
+      'util-themer': LocalJSX.UtilThemer & JSXBase.HTMLAttributes<HTMLUtilThemerElement>;
     }
   }
 }

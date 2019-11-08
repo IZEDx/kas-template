@@ -1,5 +1,5 @@
 import { Component, h, Element, State } from '@stencil/core';
-import { Context } from 'stencil-quantum';
+import { Context, Receive } from 'stencil-quantum';
 import { TypedAxiosInstance } from 'restyped-axios';
 import { APISchema, TypedClientSocket, SocketSchema } from '@kas/shared';
 
@@ -15,14 +15,11 @@ export class AppHome
 	@Context() socket!: TypedClientSocket<SocketSchema>;
 
 	@State() message = "";
-	@State() counter = 0;
+	@Receive("socket") count = 0;
 
 	async componentWillLoad()
 	{
 		this.message = (await this.api.get("/")).data.msgFromShared;
-		this.socket.on("count", c => {
-			this.counter = c;
-		});
 	}
 
 	render() {
@@ -31,7 +28,7 @@ export class AppHome
 				<div class="hero-body">
 					<div class="container">
 						<h1 class="title">
-							kas-template {this.counter}
+							kas-template {this.count}
 						</h1>
 						<h2 class="subtitle">
 							Koa + Axios + Stencil ( + Bulma )

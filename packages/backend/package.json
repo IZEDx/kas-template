@@ -5,10 +5,11 @@
   "description": "Koa Backend",
   "main": "bin/server.js",
   "scripts": {
-    "start": "node bin/server.js",
+    "start": "npm run copy && node bin/server.js",
     "build": "npx cross-env NODE_ENV=production parcel build src/index.ts --public-url . --out-dir ./dist/ --target node --bundle-node-modules",
     "dev": "npx parcel watch src/index.ts --out-dir ./dist/  --target node --bundle-node-modules",
-    "clear": "rm -rf .cache & rm -rf dist"
+    "clear": "rm -rf .cache & rm -rf dist",
+    "copy": "mkdir -p ./socket.io-client/dist && cp -r ../../node_modules/socket.io-client/dist ./socket.io-client"
   },
   "dependencies": {},
   "devDependencies": {

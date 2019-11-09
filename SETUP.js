@@ -59,7 +59,7 @@ function setup(name)
 
 function cleanup(delSetup = "y")
 {
-    if (delSetup.toLowerCase().startsWith("y")) {
+    if (!delSetup.toLowerCase().startsWith("n")) {
         fs.unlinkSync(path.join(__dirname, "SETUP.js"));
     }
 

@@ -51,9 +51,10 @@ function setup(name)
         console.log("Updating", file[0]);
         fs.writeFileSync(filePath, content);
     }
+    
+    process.stdout.write("Delete SETUP file? (y/n): ");
 }
 
-process.stdout.write("Delete SETUP file? (y/n): ");
 function cleanup(delSetup = "n")
 {
     if (delSetup.toLowerCase().startsWith("y")) {

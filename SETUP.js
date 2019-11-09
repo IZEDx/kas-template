@@ -27,7 +27,9 @@ const replaceKasTemplate = {
 };
 
 const filesToModify = {
-    "README.md": replaceKasTemplate
+    "README.md": replaceKasTemplate,
+    "package.json": replaceKasTemplate,
+    "packages/backend/src/index.ts": replaceKasTemplate
 }
 
 function setup(name)
@@ -51,11 +53,11 @@ function setup(name)
         console.log("Updating", file[0]);
         fs.writeFileSync(filePath, content);
     }
-    
+
     process.stdout.write("Delete SETUP file? (y/n): ");
 }
 
-function cleanup(delSetup = "n")
+function cleanup(delSetup = "y")
 {
     if (delSetup.toLowerCase().startsWith("y")) {
         fs.unlinkSync(path.join(__dirname, "SETUP.js"));

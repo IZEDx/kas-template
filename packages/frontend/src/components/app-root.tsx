@@ -10,17 +10,10 @@ import io from "socket.io-client";
 export class AppRoot 
 {
 	@Element() el!: HTMLAppRootElement;
-	@Provide() api!: TypedAxiosInstance<APISchema>;
-	@Provide() socket!: TypedClientSocket<SocketSchema>;
-
-	componentWillLoad()
-	{
-		this.api = axios.create<APISchema>({
-			baseURL: "/api"
-		});
-		this.socket = io() as TypedClientSocket<SocketSchema>;
-	}
-
+	@Provide() api = axios.create<APISchema>({
+		baseURL: "/api"
+	});
+	@Provide() socket = io() as TypedClientSocket<SocketSchema>;
 
 	render() 
 	{

@@ -1,24 +1,22 @@
-import { Component, Prop, h, Element, State } from '@stencil/core';
+import { Component, Prop, h, Element } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import { Context } from 'stencil-quantum';
+import { Context, Get } from 'stencil-quantum';
 import { TypedAxiosInstance } from 'restyped-axios';
 import { APISchema } from '@kas/shared';
 
 @Component({
   tag: 'app-profile'
 })
-export class AppProfile {
+export class AppProfile 
+{
 	@Prop() match: MatchResults;
 	@Element() el!: HTMLAppHomeElement;
+
 	@Context() api!: TypedAxiosInstance<APISchema>;
-	@State() message = "";
+	@Get("api", "/") apiRoot = {msgFromShared: "initial message"};
 
-	async componentWillLoad()
+	normalize(name: string): string 
 	{
-		this.message = (await this.api.get("/")).data.msgFromShared;
-	}
-
-	normalize(name: string): string {
 		if (name) {
 			return name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
 		}
@@ -32,7 +30,7 @@ export class AppProfile {
 					<div class="hero-body">
 						<div class="container">
 							<h1 class="title">
-								{this.message}
+								{this.apiRoot.msgFromShared}
 							</h1>
 							<h2 class="subtitle">
 								Message from API

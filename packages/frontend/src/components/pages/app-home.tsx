@@ -1,4 +1,4 @@
-import { Component, h, Element, State } from '@stencil/core';
+import { Component, h, Element } from '@stencil/core';
 import { Context, Receive } from 'stencil-quantum';
 import { TypedAxiosInstance } from 'restyped-axios';
 import { APISchema, TypedClientSocket, SocketSchema } from '@kas/shared';
@@ -13,14 +13,7 @@ export class AppHome
 
 	@Context() api!: TypedAxiosInstance<APISchema>;
 	@Context() socket!: TypedClientSocket<SocketSchema>;
-
-	@State() message = "";
 	@Receive("socket") count = 0;
-
-	async componentWillLoad()
-	{
-		this.message = (await this.api.get("/")).data.msgFromShared;
-	}
 
 	render() {
 		return [

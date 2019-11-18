@@ -10,13 +10,14 @@
     "dev:frontend": "cd ./packages/frontend && npm run dev",
     "dev:backend": "cd ./packages/backend && npm run dev",
     "test": "npx lerna run test",
-    "start": "cd ./packages/backend && npm start",
+    "start": "npm run copy && node bin/server.js",
     "postinstall": "npm run setup && npm run bootstrap",
     "setup": "node SETUP.js",
-    "typesync": "npx typesync"
+    "typesync": "npx typesync",
+    "copy": "mkdir -p ./socket.io-client/dist && cp -r ./node_modules/socket.io-client/dist ./socket.io-client"
   },
   "devDependencies": {
-    "@stencil/core": "^1.3.3",
+    "@stencil/core": "^1.8.0",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.1.1",
     "@types/koa": "^2.0.52",
@@ -28,8 +29,9 @@
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
     "bulma": "^0.8.0",
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "cross-env": "^6.0.3",
+    "json-beautify": "^1.1.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
@@ -41,12 +43,12 @@
     "restyped": "^1.1.0",
     "restyped-axios": "^2.0.0",
     "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0",
-    "stencil-quantum": "^0.4.1",
-    "typescript": "3.6.4",
-    "typesync": "^0.6.1"
+    "stencil-quantum": "^0.5.2",
+    "typescript": "3.7.2",
+    "typesync": "^0.6.1",
+    "uws": "^10.148.1"
   },
   "dependencies": {
-    "uws": "10.148.1"
+    "socket.io-client": "^2.3.0"
   }
 }

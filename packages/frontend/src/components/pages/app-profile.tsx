@@ -13,13 +13,14 @@ export class AppProfile
 	@Element() el!: HTMLAppHomeElement;
 
 	@Context() api!: TypedAxiosInstance<APISchema>;
-	@Get("api", "/") apiRoot = {msgFromShared: "initial message"};
+	@Get<APISchema>("api", "/") apiRoot = {msgFromShared: "initial message"};
 
 	normalize(name: string): string 
 	{
 		if (name) {
 			return name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
 		}
+		this.api.put("bla", )
 		return ''; 
 	}
 

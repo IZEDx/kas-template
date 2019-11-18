@@ -1,8 +1,10 @@
 import { Component, h, Element } from '@stencil/core';
-import axios, { TypedAxiosInstance } from 'restyped-axios';
-import { APISchema, TypedClientSocket, SocketSchema } from "@kas/shared";
-import { Provide } from 'stencil-quantum';
+import axios from 'restyped-axios';
+import { APISchema, TypedClientSocket, SocketSchema, SharedConfig, FrontendConfig } from "@kas/shared";
+import { Provide, Get, log } from 'stencil-quantum';
 import io from "socket.io-client";
+
+log.debug = true;
 
 @Component({
  	tag: 'app-root'
@@ -14,6 +16,13 @@ export class AppRoot
 		baseURL: "/api"
 	});
 	@Provide() socket = io() as TypedClientSocket<SocketSchema>;
+	@Get<APISchema>("api", "/config") config!: SharedConfig & FrontendConfig;
+
+	async componentDidLoad()
+	{
+		await new Promise(res => setTimeout(res, 500));
+		console.log("From config:", this.config);
+	}
 
 	render() 
 	{

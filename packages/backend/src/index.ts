@@ -11,6 +11,7 @@ import { createApi } from "./api";
 import { readFile, log } from "./libs/utils";
 import { createServer } from "http";
 import { onConnection } from "./socket";
+import { ConfigProvider } from "@kas/config/provider";
 
 const frontEndDir = join(__dirname, "..", "..", "frontend", "www");
 const staticExtensions = ["js", "map", "html", "json", "css", "ico", "png", "jpg"];
@@ -25,8 +26,10 @@ export async function main()
     const router = new Router();
     const api = new Router();
     const port = parseInt(process.env.PORT) || 3000;
+    const config = await ConfigProvider.create(api);
 
-    await createApi(api);
+
+    await createApi(api, config);
     
     app.use(json());
     app.use(logger());
@@ -58,6 +61,7 @@ export async function main()
         log.main(`Server started on port ${port}`);
     });
 
+    log.debug(config.get("test"));
     log.debug(helloWorld);
 }
  

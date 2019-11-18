@@ -12,6 +12,7 @@
     "generate": "npx stencil generate"
   },
   "devDependencies": {
-    "@kas/shared": "^0"
+    "@kas/shared": "^0",
+    "@kas/config": "^0"
   }
 }

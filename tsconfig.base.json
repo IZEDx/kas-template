@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "lib": [
       "dom",
       "esnext"

@@ -1,6 +1,7 @@
-import { APISchema, helloWorld, TypedRouter } from "@kas/shared";
+import { APISchema, helloWorld, TypedKoaRouter } from "@kas/shared";
+import { ConfigProvider } from "@kas/config/provider";
 
-export function createApi(router: TypedRouter<APISchema>)
+export function createApi(router: TypedKoaRouter<APISchema>, config: ConfigProvider)
 {
     router.get("/", async (ctx, next) => {
         ctx.body = { msgFromShared: helloWorld }

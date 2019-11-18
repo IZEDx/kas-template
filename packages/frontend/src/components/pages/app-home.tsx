@@ -13,7 +13,7 @@ export class AppHome
 
 	@Context() api!: TypedAxiosInstance<APISchema>;
 	@Context() socket!: TypedClientSocket<SocketSchema>;
-	@Receive("socket") count = 0;
+	@Receive<TypedClientSocket<SocketSchema>>("socket") count = 0;
 
 	render() {
 		return [

@@ -1,3 +1,4 @@
+import { SharedConfig, FrontendConfig } from "./configSchema";
 
 export interface APISchema {
     "/": {
@@ -12,6 +13,11 @@ export interface APISchema {
             response: {
                 bar: string
             }
+        }
+    }
+    "/config": {
+        "GET": {
+            response: SharedConfig & FrontendConfig
         }
     }
 }
